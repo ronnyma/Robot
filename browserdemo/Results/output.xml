@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20170419 20:21:02.367" generator="Robot 3.0.2 (Python 2.7.13 on darwin)">
+<suite source="/Users/ronnyma/Development/robotframework/browserdemo/Tests/TaxClass1.robot" id="s1" name="TaxClass1">
+<test id="s1-t1" name="Tax Calculator Test">
+<kw type="setup" name="Open the browser" library="Common">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>about:blank</arg>
+<arg>chrome</arg>
+</arguments>
+<msg timestamp="20170419 20:21:02.523" level="INFO">Opening browser 'chrome' to base url 'about:blank'</msg>
+<status status="PASS" endtime="20170419 20:21:04.212" starttime="20170419 20:21:02.523"></status>
+</kw>
+<status status="PASS" endtime="20170419 20:21:04.212" starttime="20170419 20:21:02.522"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Open browser and navigate to the tax calculator</arg>
+</arguments>
+<msg timestamp="20170419 20:21:04.213" level="INFO">Open browser and navigate to the tax calculator</msg>
+<status status="PASS" endtime="20170419 20:21:04.213" starttime="20170419 20:21:04.213"></status>
+</kw>
+<kw name="Parameterized Test" library="TaxClass.Web.Ui">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Testing tax class 1</arg>
+</arguments>
+<msg timestamp="20170419 20:21:04.214" level="INFO">Testing tax class 1</msg>
+<status status="PASS" endtime="20170419 20:21:04.214" starttime="20170419 20:21:04.214"></status>
+</kw>
+<kw name="Navigate to app" library="TaxClass.Web.Ui">
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>http://transfinite.no/robot</arg>
+</arguments>
+<msg timestamp="20170419 20:21:04.215" level="INFO">Opening url 'http://transfinite.no/robot'</msg>
+<status status="PASS" endtime="20170419 20:21:04.675" starttime="20170419 20:21:04.215"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="Selenium2Library">
+<doc>Waits until `text` appears on current page.</doc>
+<arguments>
+<arg>Welcome to the Tax Calculator!</arg>
+</arguments>
+<status status="PASS" endtime="20170419 20:21:04.699" starttime="20170419 20:21:04.675"></status>
+</kw>
+<status status="PASS" endtime="20170419 20:21:04.699" starttime="20170419 20:21:04.215"></status>
+</kw>
+<kw name="Set correct tax class" library="TaxClass.Web.Ui">
+<kw name="Select From List By Label" library="Selenium2Library">
+<doc>Selects `*labels` from list identified by `locator`</doc>
+<arguments>
+<arg>id=tax1</arg>
+<arg>1</arg>
+</arguments>
+<msg timestamp="20170419 20:21:04.700" level="INFO">Selecting label(s) '1' from list 'id=tax1'.</msg>
+<status status="PASS" endtime="20170419 20:21:04.760" starttime="20170419 20:21:04.699"></status>
+</kw>
+<status status="PASS" endtime="20170419 20:21:04.760" starttime="20170419 20:21:04.699"></status>
+</kw>
+<kw type="for" name="${key} IN [ @{item.keys()} ]">
+<kw type="foritem" name="${key} = 300000">
+<kw name="Enter salary info and calculate" library="TaxClass.Web.Ui">
+<arguments>
+<arg>${key}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>id=salary</arg>
+<arg>${salary}</arg>
+</arguments>
+<msg timestamp="20170419 20:21:04.762" level="INFO">Typing text '300000' into text field 'id=salary'</msg>
+<status status="PASS" endtime="20170419 20:21:04.861" starttime="20170419 20:21:04.761"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>id=calculate</arg>
+</arguments>
+<msg timestamp="20170419 20:21:04.862" level="INFO">Clicking button 'id=calculate'.</msg>
+<status status="PASS" endtime="20170419 20:21:04.926" starttime="20170419 20:21:04.862"></status>
+</kw>
+<status status="PASS" endtime="20170419 20:21:04.926" starttime="20170419 20:21:04.761"></status>
+</kw>
+<kw name="Get and verify calculated tax" library="TaxClass.Web.Ui">
+<arguments>
+<arg>${item["${key}"]}</arg>
+</arguments>
+<kw name="Element Should Contain" library="Selenium2Library">
+<doc>Verifies element identified by `locator` contains text `expected`.</doc>
+<arguments>
+<arg>id=outcome</arg>
+<arg>${tax}</arg>
+</arguments>
+<msg timestamp="20170419 20:21:04.927" level="INFO">Verifying element 'id=outcome' contains text '90000'.</msg>
+<status status="PASS" endtime="20170419 20:21:04.962" starttime="20170419 20:21:04.927"></status>
+</kw>
+<status status="PASS" endtime="20170419 20:21:04.962" starttime="20170419 20:21:04.926"></status>
+</kw>
+<status status="PASS" endtime="20170419 20:21:04.963" starttime="20170419 20:21:04.761"></status>
+</kw>
+<kw type="foritem" name="${key} = 200000">
+<kw name="Enter salary info and calculate" library="TaxClass.Web.Ui">
+<arguments>
+<arg>${key}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>id=salary</arg>
+<arg>${salary}</arg>
+</arguments>
+<msg timestamp="20170419 20:21:04.964" level="INFO">Typing text '200000' into text field 'id=salary'</msg>
+<status status="PASS" endtime="20170419 20:21:05.001" starttime="20170419 20:21:04.963"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>id=calculate</arg>
+</arguments>
+<msg timestamp="20170419 20:21:05.001" level="INFO">Clicking button 'id=calculate'.</msg>
+<status status="PASS" endtime="20170419 20:21:05.024" starttime="20170419 20:21:05.001"></status>
+</kw>
+<status status="PASS" endtime="20170419 20:21:05.024" starttime="20170419 20:21:04.963"></status>
+</kw>
+<kw name="Get and verify calculated tax" library="TaxClass.Web.Ui">
+<arguments>
+<arg>${item["${key}"]}</arg>
+</arguments>
+<kw name="Element Should Contain" library="Selenium2Library">
+<doc>Verifies element identified by `locator` contains text `expected`.</doc>
+<arguments>
+<arg>id=outcome</arg>
+<arg>${tax}</arg>
+</arguments>
+<msg timestamp="20170419 20:21:05.027" level="INFO">Verifying element 'id=outcome' contains text '50000'.</msg>
+<status status="PASS" endtime="20170419 20:21:05.040" starttime="20170419 20:21:05.025"></status>
+</kw>
+<status status="PASS" endtime="20170419 20:21:05.040" starttime="20170419 20:21:05.025"></status>
+</kw>
+<status status="PASS" endtime="20170419 20:21:05.040" starttime="20170419 20:21:04.963"></status>
+</kw>
+<kw type="foritem" name="${key} = 100000">
+<kw name="Enter salary info and calculate" library="TaxClass.Web.Ui">
+<arguments>
+<arg>${key}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>id=salary</arg>
+<arg>${salary}</arg>
+</arguments>
+<msg timestamp="20170419 20:21:05.041" level="INFO">Typing text '100000' into text field 'id=salary'</msg>
+<status status="PASS" endtime="20170419 20:21:05.097" starttime="20170419 20:21:05.041"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>id=calculate</arg>
+</arguments>
+<msg timestamp="20170419 20:21:05.097" level="INFO">Clicking button 'id=calculate'.</msg>
+<status status="PASS" endtime="20170419 20:21:05.121" starttime="20170419 20:21:05.097"></status>
+</kw>
+<status status="PASS" endtime="20170419 20:21:05.121" starttime="20170419 20:21:05.041"></status>
+</kw>
+<kw name="Get and verify calculated tax" library="TaxClass.Web.Ui">
+<arguments>
+<arg>${item["${key}"]}</arg>
+</arguments>
+<kw name="Element Should Contain" library="Selenium2Library">
+<doc>Verifies element identified by `locator` contains text `expected`.</doc>
+<arguments>
+<arg>id=outcome</arg>
+<arg>${tax}</arg>
+</arguments>
+<msg timestamp="20170419 20:21:05.122" level="INFO">Verifying element 'id=outcome' contains text '20000'.</msg>
+<status status="PASS" endtime="20170419 20:21:05.135" starttime="20170419 20:21:05.122"></status>
+</kw>
+<status status="PASS" endtime="20170419 20:21:05.135" starttime="20170419 20:21:05.121"></status>
+</kw>
+<status status="PASS" endtime="20170419 20:21:05.135" starttime="20170419 20:21:05.041"></status>
+</kw>
+<kw type="foritem" name="${key} = 350000">
+<kw name="Enter salary info and calculate" library="TaxClass.Web.Ui">
+<arguments>
+<arg>${key}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>id=salary</arg>
+<arg>${salary}</arg>
+</arguments>
+<msg timestamp="20170419 20:21:05.136" level="INFO">Typing text '350000' into text field 'id=salary'</msg>
+<status status="PASS" endtime="20170419 20:21:05.172" starttime="20170419 20:21:05.136"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>id=calculate</arg>
+</arguments>
+<msg timestamp="20170419 20:21:05.172" level="INFO">Clicking button 'id=calculate'.</msg>
+<status status="PASS" endtime="20170419 20:21:05.196" starttime="20170419 20:21:05.172"></status>
+</kw>
+<status status="PASS" endtime="20170419 20:21:05.196" starttime="20170419 20:21:05.135"></status>
+</kw>
+<kw name="Get and verify calculated tax" library="TaxClass.Web.Ui">
+<arguments>
+<arg>${item["${key}"]}</arg>
+</arguments>
+<kw name="Element Should Contain" library="Selenium2Library">
+<doc>Verifies element identified by `locator` contains text `expected`.</doc>
+<arguments>
+<arg>id=outcome</arg>
+<arg>${tax}</arg>
+</arguments>
+<msg timestamp="20170419 20:21:05.197" level="INFO">Verifying element 'id=outcome' contains text '140000'.</msg>
+<status status="PASS" endtime="20170419 20:21:05.210" starttime="20170419 20:21:05.197"></status>
+</kw>
+<status status="PASS" endtime="20170419 20:21:05.210" starttime="20170419 20:21:05.196"></status>
+</kw>
+<status status="PASS" endtime="20170419 20:21:05.210" starttime="20170419 20:21:05.135"></status>
+</kw>
+<kw type="foritem" name="${key} = 600000">
+<kw name="Enter salary info and calculate" library="TaxClass.Web.Ui">
+<arguments>
+<arg>${key}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>id=salary</arg>
+<arg>${salary}</arg>
+</arguments>
+<msg timestamp="20170419 20:21:05.211" level="INFO">Typing text '600000' into text field 'id=salary'</msg>
+<status status="PASS" endtime="20170419 20:21:05.247" starttime="20170419 20:21:05.211"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>id=calculate</arg>
+</arguments>
+<msg timestamp="20170419 20:21:05.247" level="INFO">Clicking button 'id=calculate'.</msg>
+<status status="PASS" endtime="20170419 20:21:05.274" starttime="20170419 20:21:05.247"></status>
+</kw>
+<status status="PASS" endtime="20170419 20:21:05.274" starttime="20170419 20:21:05.210"></status>
+</kw>
+<kw name="Get and verify calculated tax" library="TaxClass.Web.Ui">
+<arguments>
+<arg>${item["${key}"]}</arg>
+</arguments>
+<kw name="Element Should Contain" library="Selenium2Library">
+<doc>Verifies element identified by `locator` contains text `expected`.</doc>
+<arguments>
+<arg>id=outcome</arg>
+<arg>${tax}</arg>
+</arguments>
+<msg timestamp="20170419 20:21:05.275" level="INFO">Verifying element 'id=outcome' contains text '300000'.</msg>
+<status status="PASS" endtime="20170419 20:21:05.288" starttime="20170419 20:21:05.275"></status>
+</kw>
+<status status="PASS" endtime="20170419 20:21:05.288" starttime="20170419 20:21:05.275"></status>
+</kw>
+<status status="PASS" endtime="20170419 20:21:05.288" starttime="20170419 20:21:05.210"></status>
+</kw>
+<kw type="foritem" name="${key} = 400000">
+<kw name="Enter salary info and calculate" library="TaxClass.Web.Ui">
+<arguments>
+<arg>${key}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>id=salary</arg>
+<arg>${salary}</arg>
+</arguments>
+<msg timestamp="20170419 20:21:05.288" level="INFO">Typing text '400000' into text field 'id=salary'</msg>
+<status status="PASS" endtime="20170419 20:21:05.323" starttime="20170419 20:21:05.288"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>id=calculate</arg>
+</arguments>
+<msg timestamp="20170419 20:21:05.324" level="INFO">Clicking button 'id=calculate'.</msg>
+<status status="PASS" endtime="20170419 20:21:05.350" starttime="20170419 20:21:05.324"></status>
+</kw>
+<status status="PASS" endtime="20170419 20:21:05.350" starttime="20170419 20:21:05.288"></status>
+</kw>
+<kw name="Get and verify calculated tax" library="TaxClass.Web.Ui">
+<arguments>
+<arg>${item["${key}"]}</arg>
+</arguments>
+<kw name="Element Should Contain" library="Selenium2Library">
+<doc>Verifies element identified by `locator` contains text `expected`.</doc>
+<arguments>
+<arg>id=outcome</arg>
+<arg>${tax}</arg>
+</arguments>
+<msg timestamp="20170419 20:21:05.351" level="INFO">Verifying element 'id=outcome' contains text '200000'.</msg>
+<status status="PASS" endtime="20170419 20:21:05.363" starttime="20170419 20:21:05.350"></status>
+</kw>
+<status status="PASS" endtime="20170419 20:21:05.363" starttime="20170419 20:21:05.350"></status>
+</kw>
+<status status="PASS" endtime="20170419 20:21:05.363" starttime="20170419 20:21:05.288"></status>
+</kw>
+<status status="PASS" endtime="20170419 20:21:05.363" starttime="20170419 20:21:04.761"></status>
+</kw>
+<status status="PASS" endtime="20170419 20:21:05.363" starttime="20170419 20:21:04.214"></status>
+</kw>
+<kw type="teardown" name="Close the browser" library="Common">
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20170419 20:21:05.428" starttime="20170419 20:21:05.364"></status>
+</kw>
+<status status="PASS" endtime="20170419 20:21:05.429" starttime="20170419 20:21:05.364"></status>
+</kw>
+<doc>Testing the tax calculator. See the docs for business rules.</doc>
+<status status="PASS" endtime="20170419 20:21:05.429" critical="yes" starttime="20170419 20:21:02.522"></status>
+</test>
+<status status="PASS" endtime="20170419 20:21:05.430" starttime="20170419 20:21:02.369"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="TaxClass1" pass="1">TaxClass1</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
